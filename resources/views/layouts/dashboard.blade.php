@@ -4,6 +4,7 @@
 <!-- Fonts -->
 <link rel="dns-prefetch" href="//fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
 
 <!-- Styles -->
 <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -80,10 +81,38 @@
       </nav>
 
 
-<main class="">
-    @yield('content')
-</main>
-@livewireScripts
+    <main class="">
+        @yield('content')
+    </main>
+    @livewireScripts
+
+    <script>
+
+        window.addEventListener('closeModal', event => {
+            $("#companyModal").modal('hide');
+        })
+
+        window.addEventListener('openModal', event => {
+            $("#companyModal").modal('show');
+        })
+
+        window.addEventListener('openDeleteModal', event => {
+            $("#modalFormDelete").modal('show');
+        })
+
+        window.addEventListener('closeDeleteModal', event => {
+            $("#modalFormDelete").modal('hide');
+        })
+
+        $(document).ready(function(){
+            // This event is triggered when the modal
+            $("#companyModal").on('hidden.bs.modal', function(){
+                alert('The modal is now hidden.');
+            });
+        });
+    </script>
+
+
 </div>
 </body>
 </html>

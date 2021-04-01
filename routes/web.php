@@ -20,3 +20,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/empresas', function(){
+    return view('livewire.companies.index');
+})->middleware('auth')->name('companies.index');
